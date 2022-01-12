@@ -20,7 +20,7 @@ class HotelFactory extends Factory
             'country'=>$this->faker->country(),
             'city'=>$this->faker->city(),
             'address'=>$this->faker->address(),
-            'image'=>$this->faker->image('resources/img')
+            'image'=>$this->faker->image('public/img',400,400, null,  false)
         ];
     }
 }

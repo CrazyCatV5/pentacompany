@@ -46,6 +46,20 @@
             @enderror
         </div>
         <div>
+            <label> фамилия</label>
+            <input id="lname" name="lname" type="text", value="", placeholder="фамилия">
+            @error('lname')
+            <div>{{$message}}</div>
+            @enderror
+        </div>
+        <div>
+            <label> отчество</label>
+            <input id="mname" name="mname" type="mname", value="", placeholder="отчество">
+            @error('mname')
+            <div>{{$message}}</div>
+            @enderror
+        </div>
+        <div>
             <label>login</label>
             <input id="login" name="login" type="text", value="", placeholder="login">
             @error('login')

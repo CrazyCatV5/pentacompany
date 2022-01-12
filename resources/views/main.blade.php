@@ -21,6 +21,10 @@
         </style>
     </head>
     <body class="antialiased">
-    <p>{{ Auth::user()->first_name }}</p>
+    @foreach(\Illuminate\Support\Facades\DB::table('hotels')->get()->toArray() as $hotel)
+       <p>{{$hotel->name}}</p>
+       <img src="img/{{$hotel->image}}" alt="dfq">
+       <a href="{{ route('hotel_item', ['id' => $hotel->id]) }}"><b>{{ $hotel->name }}</b></a>
+    @endforeach
     </body>
 </html>

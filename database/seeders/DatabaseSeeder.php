@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         User::factory(50)->create();
         Hotel::factory(50)->create();
         Tour::factory(50)->create();

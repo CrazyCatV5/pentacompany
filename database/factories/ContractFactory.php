@@ -14,8 +14,8 @@ class ContractFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->numberBetween(0,50),
-            'tour_id'=>$this->faker->numberBetween(0,50),
+            'user_id'=>$this->faker->numberBetween(1,50),
+            'tour_id'=>$this->faker->numberBetween(1,50),
             'price'=>$this->faker->numberBetween(1000,100000),
             'start'=>$this->faker->date()
         ];

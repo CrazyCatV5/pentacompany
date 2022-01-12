@@ -14,8 +14,8 @@ class TourReviewFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->numberBetween(1,50),
-            'tour_id'=>$this->faker->numberBetween(1,50),
+            'user_id'=>$this->faker->numberBetween(1,10),
+            'tour_id'=>$this->faker->numberBetween(1,10),
             'text'=>$this->faker->realText(),
             'rating'=>$this->faker->numberBetween(0,10),
             'likes'=>$this->faker->numberBetween(0,50),

@@ -22,7 +22,7 @@ Route::name('user.')->group(function (){
     Route::view('/private', 'private')->middleware('auth')->name('private');
     Route::get('/login',function (){
        if(Auth::check()){
-           return redirect(route('begin'));
+           return redirect(route('start'));
        }
        return view('login');
     })->name('login');
@@ -38,5 +38,10 @@ Route::name('user.')->group(function (){
         return view('registration');
     })->name('registration');
     Route::post('/registration',[\App\Http\Controllers\RegisterController::class, 'save']);
-
+    Route::get('/private', [\App\Http\Controllers\PrivateController::class, 'private'])->name('private');
 });
+Route::get('/main', function () {
+    return view('main');
+})->name('main');
+
+Route::get('/main/{id}', [\App\Http\Controllers\HotelController::class, 'getDetails'])->name('hotel_item');

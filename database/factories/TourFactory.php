@@ -18,7 +18,7 @@ class TourFactory extends Factory
             'rating'=>$this->faker->numberBetween(0,10),
             'country'=>$this->faker->country(),
             'city'=>$this->faker->city(),
-            'image'=>$this->faker->image('resources/img'),
+            'image'=>$this->faker->image('public/img',400,400, null,  false),
             'vouchers_count'=>$this->faker->numberBetween(100,1000),
             'vouchers_sold'=>$this->faker->numberBetween(0,100),
             'cost'=>$this->faker->numberBetween(2000,100000),

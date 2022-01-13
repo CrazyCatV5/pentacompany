@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset("css/style.css") }}">
-        <meta name="viewport" content="width=device-width">
+
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -22,33 +21,26 @@
         </style>
     </head>
     <body class="antialiased">
+       <h1>Вход</h1>
+    <form method="post", action="{{route('user.login')}}">
+        @csrf
+        <div>
+            <label> email</label>
+            <input id="email" name="email" type="text", value="", placeholder="email">
+            @error('email')
+            <div>{{$message}}</div>
+            @enderror
+        </div>
+        <div>
+            <label> password</label>
+            <input id="password" name="password" type="password", value="", placeholder="password">
+            @error('password')
+            <div>{{$message}}</div>
+            @enderror
+        </div>
+        <div>
+            <button type="submit", name="sendMe", value="1">Войти</button>
+        </div>
     </form>
-       <div class="login-center">
-           <div style = 'margin:auto;'>
-               <form method="post", action="{{route('user.login')}}">
-                   @csrf
-                   <div class="registration__container ">
-                       <h1>Авторизация</h1>
-                       <hr class="registration__line">
-
-                       <label for="email"><b class="registration__point">Email</b></label>
-                       <input type="text" placeholder="Введите Email" name="email" required class="registration__text">
-                       @error('email')
-                       <div>{{$message}}</div>
-                       @enderror
-                       <label for="psw"><b class="registration__point">Пароль</b></label>
-                       <input type="password" placeholder="Введите пароль" name="password" required class="registration__text">
-                       @error('password')
-                       <div>{{$message}}</div>
-                       @enderror
-                       <hr class="registration__line">
-                       <button type="submit" class="registerbtn" name="sendMe" value="1">Войти</button>
-                       <div class="registration__container signin">
-                           <p>Нет аккаунта? <a href="registration" class= "dodgerblue">Зарегистрироваться</a></p>
-                       </div>
-                   </div>
-               </form>
-           </div>
-       </div>
     </body>
 </html>

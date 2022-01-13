@@ -61,7 +61,7 @@
     </div>
 </header>
 <div class="banner">
-    <form action=''>
+    <form action='' method="get">
     <div class="container align-items_center container-box space-around-box">
         <div class="choise" style='border-top-left-radius:6px; border-bottom-left-radius:6px; padding:0px;'>
             <div class="drop" style='margin-top:10px; margin-bottom:10px;'>
@@ -89,30 +89,27 @@
                 </div>
             </div>
         </div>
-        <div class="choise" style='padding:5px;'>
-            Дата вылета:<input type="text" name="daterange" value="01/01/2021 - 01/15/2021" />
-        </div>
         <div class="choise" class="start-choise">
             <div class="drop">
                 <p>Цена</p>
                 <div class="dropdown_block">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                    </ul>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -137,16 +134,15 @@
     </div>
     </form>
 </div>
-
 <ul class="container box_card">
     @foreach(\Illuminate\Support\Facades\DB::table('tours')->orderBy('rating','desc')->take(4)->get() as $tour)
-    <li class="card">
-        <img src="img/{{$tour->image}}" alt="Avatar" style="width:210px; height:130px;">
-        <div class="container_description">
-            <h4><b>{{$tour->name}}</b></h4>
-            <p> {{$tour->cost}} р</p>
-        </div>
-    </li>
+            <li class="card" onclick="location.href='{{ route('hotel_item', ['id' => $tour->id]) }}';">
+                <img src="img/{{$tour->image}}" alt="Avatar" style="width:210px; height:130px;">
+                <div class="container_description">
+                    <h4><b>{{$tour->name}}</b></h4>
+                    <p> {{$tour->cost}} р</p>
+                </div>
+            </li>
     @endforeach
 </ul>
 
@@ -171,7 +167,7 @@
             </div>
         </div>
     </div>
-    @foreach($data as $tour)
+    @foreach($Tour as $tour)
     <div class="item-cart">
         <div class = "product__inf-cart">
             <img src="img/{{$tour->image}}" class="image-cart" alt="" />
@@ -186,7 +182,7 @@
         </div>
     </div>
     @endforeach
-    {{ $data->links() }}
+    {!! $Tour->appends(request()->except('page'))->links() !!}
 </div>
     <style>.w-5{
             display: none;

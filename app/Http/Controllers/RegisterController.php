@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'gender' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5'
+            'password' => 'required|confirmed|min:5'
         ]);
 
         $user = new User();

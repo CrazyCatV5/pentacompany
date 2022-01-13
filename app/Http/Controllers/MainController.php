@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class MainController extends Controller
 {
@@ -24,16 +25,16 @@ class MainController extends Controller
     }
 
     public function main(Request $request){
-        $search =  $request->post('country');
-        $search1 =  $request->post('daterange');
+        $search =  $request->get('country');
 
         if($search!="страна"){
-            $Members = Tour::where('country','=',$search)->paginate(10);
-            $Members->appends(['q' => $search]);
+            $Tour = Tour::where('country','=',$search)->paginate(10);
+            $Tour->appends(['q' => $search]);
         }
         else{
-            $Members = Tour::paginate(10);
+            $Tour = Tour::paginate(10);
         }
-        return View('main1')->with('data',$Members);
+        $Tour->appends (['search' =>  $search]);
+        return View('main1',['Tour' => $Tour])->with(['Tour' => $Tour]);
     }
 }

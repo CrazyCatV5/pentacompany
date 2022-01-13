@@ -40,7 +40,6 @@ Route::name('user.')->group(function (){
     Route::post('/registration',[\App\Http\Controllers\RegisterController::class, 'save']);
     Route::get('/private', [\App\Http\Controllers\PrivateController::class, 'private'])->name('private');
 });
-Route::POST('/main',[MainController::class, 'main'])->name('main');
 Route::get('/main',[MainController::class, 'main'])->name('main');
 
 Route::get('/main/{id}', [\App\Http\Controllers\HotelController::class, 'getDetails'])->name('hotel_item');

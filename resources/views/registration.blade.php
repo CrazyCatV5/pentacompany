@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ asset("css/style.css") }}">
+        <meta name="viewport" content="width=device-width">
 
         <title>Laravel</title>
 
@@ -21,71 +23,59 @@
         </style>
     </head>
     <body class="antialiased">
-       <h1>registration</h1>
-    <form method="post", action="{{route('user.registration')}}">
-        @csrf
-        <div>
-            <label> email</label>
-            <input id="email" name="email" type="text", value="", placeholder="email">
-            @error('email')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label> password</label>
-            <input id="password" name="password" type="password", value="", placeholder="password">
-            @error('password')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label> name</label>
-            <input id="name" name="name" type="text", value="", placeholder="name">
-            @error('name')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label> фамилия</label>
-            <input id="lname" name="lname" type="text", value="", placeholder="фамилия">
-            @error('lname')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label> отчество</label>
-            <input id="mname" name="mname" type="mname", value="", placeholder="отчество">
-            @error('mname')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label>login</label>
-            <input id="login" name="login" type="text", value="", placeholder="login">
-            @error('login')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label> gender</label>
-            <select id="gender" name="gender">
-                <option value="0">Male</option>
-                <option value="1">Female</option>
-            </select>
-            @error('gender')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label>number</label>
-            <input id="number" name="number" type="tel", value="", placeholder="number">
-            @error('number')
-            <div>{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <button type="submit", name="sendMe", value="1">Войти</button>
-        </div>
-    </form>
+       <form method="post", action="{{route('user.registration')}}">
+           @csrf
+           <div class="registration__container registration-center">
+               <h1 >Регистрация</h1>
+               <hr class= "registration__line">
+               <label for="login"><b class="registration__point">login</b></label>
+               <input type="text" placeholder="Введите login" id="login" name="login" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label for="email"><b class="registration__point">Email</b></label>
+               <input type="text" placeholder="Введите Email" id="email" name="email" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label for="tel"><b class="registration__point">Телефон</b></label>
+               <input type="tel" name="number" placeholder="Введите телфон" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label ><b class="registration__point">Имя</b></label>
+               <input name="name" type="text" placeholder="Введите Имя" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label ><b  class="registration__point">Фамилия</b></label>
+               <input name="lname" type="text" placeholder="Введите Фамилию" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label ><b class="registration__point">Отчество</b></label>
+               <input name="mname" type="text" placeholder="Введите Отчество" required class="registration__text">
+               @error('email')
+               <div>{{$message}}</div>
+               @enderror
+               <label for="psw"><b class="registration__point">Пароль</b></label>
+               <input type="password" placeholder="Введите пароль" name="password" required class="registration__text">
+               @error('password')
+               <div>{{$message}}</div>
+               @enderror
+               <label for="psw-repeat"><b class="registration__point">Повторите пароль</b></label>
+               <input type="password" placeholder="Повторите пароль" name="password_confirmation" required class="registration__text">
+               @error('password_confirmed')
+               <div>{{$message}}</div>
+               @enderror
+               <label for="psw"><b class="registration__point">Пол</b></label>
+               <select id="gender" name="gender">
+                   <option value="0">Male</option>
+                   <option value="1">Female</option>
+               </select>
+               <hr class= "registration__line">
+               <button type="submit" class="registerbtn" name = "submit">Зарегистрироваться</button>
+           </div>
+       </form>
     </body>
 </html>

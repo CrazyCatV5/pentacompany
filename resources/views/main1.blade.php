@@ -16,18 +16,6 @@
         <div class="header-right">
             <div class = "block">
                 <div class = "subblock">
-                    <div class="login">
-                        <button class="button-login" onclick="window.location.href='private'">
-                            Страны
-                        </button>
-                    </div>
-                    <div class="login">
-                        <button class="button-login" onclick="window.location.href='private'">
-                            Агенствам
-                        </button>
-                    </div>
-                </div>
-                <div class = "subblock">
                     @if (Auth::check())
                         <div class="login">
                             <button class="button-login" onclick="window.location.href='logout'">
@@ -66,66 +54,43 @@
         <div class="choise" style='border-top-left-radius:6px; border-bottom-left-radius:6px; padding:0px;'>
             <div class="drop" style='margin-top:10px; margin-bottom:10px;'>
                 <p>Куда</p>
-                <div class="dropdown_block">
                         <select name="country" id="country">
                             <option>страна</option>
-                        @foreach(\Illuminate\Support\Facades\DB::table('tours')->distinct()->get(['country'])->toArray() as $country)
+                            @foreach(\Illuminate\Support\Facades\DB::table('tours')->distinct()->get(['country'])->toArray() as $country)
                                 <option>{{$country->country}}</option>
                             @endforeach
                         </select>
 
-                </div>
             </div>
         </div>
         <div class="choise" style='padding:0px;'>
             <div class="drop" style='margin-top:10px; margin-bottom:10px;' >
-                <p>Цена</p>
-                <div class="dropdown_block" >
-                    <ul>
-                        @foreach(\Illuminate\Support\Facades\DB::table('hotels')->distinct('country')->get(['country'])->toArray() as $hotel)
-                            <li>{{$hotel->country}}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                <p>Цена мин.</p>
+                    <input type="number" placeholder="0" id="price_min" name="price_min" min="1" max="1000000000">
             </div>
         </div>
         <div class="choise" class="start-choise">
             <div class="drop">
-                <p>Цена</p>
-                <div class="dropdown_block">
-                    <select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                    </select>
-                </div>
+                <p>Цена макс.</p>
+                <input type="number" placeholder="999999" id="price_max" name="price_max" min="1" max="1000000000">
             </div>
         </div>
         <div class="choise" class="start-choise">
             <div class="drop">
-                <p>Туристы</p>
-                <div class="dropdown_block">
-                    <ul>
-                        <li>1 человек</li>
-                        <li>2 человека</li>
-                        <li>3 человека</li>
-                        <li>4 человек</li>
-                        <li>5 человек</li>
-                        <li>6 человек</li>
-                    </ul>
-                </div>
+                <p>рейтинг</p>
+                        <select name="rating" id="rating">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
             </div>
         </div>
         <button class="choise confirm_selection" >
@@ -149,22 +114,6 @@
 <div class="shopping-cart">
     <div class="header-cart">
         <div class="from_which_city">
-            <div class="header__text">Город вылета</div>
-            <div class="choise" class="start-choise" style = "width:190px; margin:0; border-right:none; padding:2px; margin-top:5px;">
-                <div class="drop">
-                    <p>Москва</p>
-                    <div class="dropdown_block">
-                        <ul>
-                            <li>1 человек</li>
-                            <li>2 человека</li>
-                            <li>3 человека</li>
-                            <li>4 человек</li>
-                            <li>5 человек</li>
-                            <li>6 человек</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     @foreach($Tour as $tour)

@@ -16,6 +16,8 @@ class CreateToursTable extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('short_description');
+            $table->text('description');
             $table->integer('rating',0,true);
             $table->string('country');
             $table->string('city');

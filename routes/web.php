@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MainController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,8 +40,7 @@ Route::name('user.')->group(function (){
     Route::post('/registration',[\App\Http\Controllers\RegisterController::class, 'save']);
     Route::get('/private', [\App\Http\Controllers\PrivateController::class, 'private'])->name('private');
 });
-Route::get('/main', function () {
-    return view('main1');
-})->name('main');
+Route::POST('/main',[MainController::class, 'main'])->name('main');
+Route::get('/main',[MainController::class, 'main'])->name('main');
 
 Route::get('/main/{id}', [\App\Http\Controllers\HotelController::class, 'getDetails'])->name('hotel_item');

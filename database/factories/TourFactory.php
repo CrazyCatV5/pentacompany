@@ -14,7 +14,9 @@ class TourFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
+            'name'=>$this->faker->realText(10),
+            'short_description'=>$this->faker->realText(100),
+            'description'=>$this->faker->realText(1000),
             'rating'=>$this->faker->numberBetween(0,10),
             'country'=>$this->faker->country(),
             'city'=>$this->faker->city(),

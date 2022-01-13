@@ -61,25 +61,28 @@
     </div>
 </header>
 <div class="banner">
+    <form action=''>
     <div class="container align-items_center container-box space-around-box">
         <div class="choise" style='border-top-left-radius:6px; border-bottom-left-radius:6px; padding:0px;'>
             <div class="drop" style='margin-top:10px; margin-bottom:10px;'>
-                <p>Откуда</p>
+                <p>Куда</p>
                 <div class="dropdown_block">
-                    <ul>
-                        @foreach(\Illuminate\Support\Facades\DB::table('hotels')->distinct()->get(['country'])->toArray() as $hotel)
-                        <li>{{$hotel->country}}</li>
-                        @endforeach
-                    </ul>
+                        <select name="country" id="country">
+                            <option>страна</option>
+                        @foreach(\Illuminate\Support\Facades\DB::table('tours')->distinct()->get(['country'])->toArray() as $country)
+                                <option>{{$country->country}}</option>
+                            @endforeach
+                        </select>
+
                 </div>
             </div>
         </div>
         <div class="choise" style='padding:0px;'>
             <div class="drop" style='margin-top:10px; margin-bottom:10px;' >
-                <p>Куда</p>
+                <p>Цена</p>
                 <div class="dropdown_block" >
                     <ul>
-                        @foreach(\Illuminate\Support\Facades\DB::table('hotels')->distinct()->get(['country'])->toArray() as $hotel)
+                        @foreach(\Illuminate\Support\Facades\DB::table('hotels')->distinct('country')->get(['country'])->toArray() as $hotel)
                             <li>{{$hotel->country}}</li>
                         @endforeach
                     </ul>
@@ -87,11 +90,11 @@
             </div>
         </div>
         <div class="choise" style='padding:5px;'>
-            Дата вылета:<input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+            Дата вылета:<input type="text" name="daterange" value="01/01/2021 - 01/15/2021" />
         </div>
         <div class="choise" class="start-choise">
             <div class="drop">
-                <p>Ночей</p>
+                <p>Цена</p>
                 <div class="dropdown_block">
                     <ul>
                         <li>1</li>
@@ -132,40 +135,19 @@
             Подобрать
         </button>
     </div>
+    </form>
 </div>
 
 <ul class="container box_card">
+    @foreach(\Illuminate\Support\Facades\DB::table('tours')->orderBy('rating','desc')->take(4)->get() as $tour)
     <li class="card">
-        <img src="img/Madagascar.jpg" alt="Avatar" style="width:210px; height:130px;">
+        <img src="img/{{$tour->image}}" alt="Avatar" style="width:210px; height:130px;">
         <div class="container_description">
-            <h4><b>Мадагаскар</b></h4>
-            <p>Из москвы 10000 р</p>
+            <h4><b>{{$tour->name}}</b></h4>
+            <p> {{$tour->cost}} р</p>
         </div>
     </li>
-
-    <li class="card">
-        <img src="img/Philippines.jpg" alt="Avatar" style="width:210px; height:130px;">
-        <div class="container_description">
-            <h4><b>Филипины</b></h4>
-            <p>Из москвы 10000 р</p>
-        </div>
-    </li>
-
-    <li class="card">
-        <img src="img/Indonesia.jpg" alt="Avatar" style="width:210px; height:130px;">
-        <div class="container_description">
-            <h4><b>Индонезия</b></h4>
-            <p>Из москвы 10000 р</p>
-        </div>
-    </li>
-
-    <li class="card">
-        <img src="img/Vietnam.jpg" alt="Avatar" style="width:210px; height:130px;">
-        <div class="container_description">
-            <h4><b>Вьетнам</b></h4>
-            <p>Из москвы 10000 р</p>
-        </div>
-    </li>
+    @endforeach
 </ul>
 
 <div class="shopping-cart">
@@ -188,92 +170,28 @@
                 </div>
             </div>
         </div>
-        <div class="checked"><input type="checkbox"><label>Без визы</label></div>
     </div>
-
+    @foreach($data as $tour)
     <div class="item-cart">
         <div class = "product__inf-cart">
-            <img src="img/Egypt.jpg" class="image-cart" alt="" />
+            <img src="img/{{$tour->image}}" class="image-cart" alt="" />
 
             <div>
-                <div class="description-cart">Египет</div>
-                <div class="item__price-cart">Египет — страна с длинной и захватывающей историей. Большая часть ее территории покрыта пустыней, вся жизнь протекает на берегах великого Нила, побережьях Средиземного и Красного морей. Жаркий климат, теплое море, памятники древности, развитая туристическая инфраструктура — залог популярности Египта.</div>
+                <div class="description-cart">{{$tour->name}}</div>
+                <div class="item__price-cart">{{$tour->short_description}}</div>
                 <div class="buttons__wrap">
-                    <button class="button__country" style="margin-left:0px;">Курорты</button>
-                    <button class="button__country">Отели</button>
-                    <button class="button__country">Найти туры</button>
+                    <button class="button__country"><a href="{{ route('hotel_item', ['id' => $tour->id]) }}">Подробнее</a></button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="item-cart">
-        <div class = "product__inf-cart">
-            <img src="img/Egypt.jpg" class="image-cart" alt="" />
-
-            <div>
-                <div class="description-cart">Египет</div>
-                <div class="item__price-cart">Египет — страна с длинной и захватывающей историей. Большая часть ее территории покрыта пустыней, вся жизнь протекает на берегах великого Нила, побережьях Средиземного и Красного морей. Жаркий климат, теплое море, памятники древности, развитая туристическая инфраструктура — залог популярности Египта.</div>
-                <div class="buttons__wrap">
-                    <button class="button__country" style="margin-left:0px;">Курорты</button>
-                    <button class="button__country">Отели</button>
-                    <button class="button__country">Найти туры</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-cart">
-        <div class = "product__inf-cart">
-            <img src="img/Egypt.jpg" class="image-cart" alt="" />
-
-            <div>
-                <div class="description-cart">Египет</div>
-                <div class="item__price-cart">Египет — страна с длинной и захватывающей историей. Большая часть ее территории покрыта пустыней, вся жизнь протекает на берегах великого Нила, побережьях Средиземного и Красного морей. Жаркий климат, теплое море, памятники древности, развитая туристическая инфраструктура — залог популярности Египта.</div>
-                <div class="buttons__wrap">
-                    <button class="button__country" style="margin-left:0px;">Курорты</button>
-                    <button class="button__country">Отели</button>
-                    <button class="button__country">Найти туры</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-cart">
-        <div class = "product__inf-cart">
-            <img src="img/Egypt.jpg" class="image-cart" alt="" />
-
-            <div>
-                <div class="description-cart">Египет</div>
-                <div class="item__price-cart">Египет — страна с длинной и захватывающей историей. Большая часть ее территории покрыта пустыней, вся жизнь протекает на берегах великого Нила, побережьях Средиземного и Красного морей. Жаркий климат, теплое море, памятники древности, развитая туристическая инфраструктура — залог популярности Египта.</div>
-                <div class="buttons__wrap">
-                    <button class="button__country" style="margin-left:0px;">Курорты</button>
-                    <button class="button__country">Отели</button>
-                    <button class="button__country">Найти туры</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-cart">
-        <div class = "product__inf-cart">
-            <img src="img/Egypt.jpg" class="image-cart" alt="" />
-
-            <div>
-                <div class="description-cart">Египет</div>
-                <div class="item__price-cart">Египет — страна с длинной и захватывающей историей. Большая часть ее территории покрыта пустыней, вся жизнь протекает на берегах великого Нила, побережьях Средиземного и Красного морей. Жаркий климат, теплое море, памятники древности, развитая туристическая инфраструктура — залог популярности Египта.</div>
-                <div class="buttons__wrap">
-                    <button class="button__country" style="margin-left:0px;">Курорты</button>
-                    <button class="button__country">Отели</button>
-                    <button class="button__country">Найти туры</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endforeach
+    {{ $data->links() }}
 </div>
-
-<div style="text-align:center"> <button class="show__more">ПОКАЗАТЬ ЕЩЁ</button></div>
-
+    <style>.w-5{
+            display: none;
+        }
+    </style>
 <div class="grey__background">
     <div id="footer">
         Anna tour&trade; 2022

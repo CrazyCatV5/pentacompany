@@ -23,6 +23,7 @@
     <body class="antialiased">
     <a href="{{ url()->previous() }}">назад</a>
     <h1>{{ $hotel_item->name }}</h1>
+    <h1>{{ $hotel_item->start }}</h1>
     <img src="http://localhost/img/{{$hotel_item->image}}" alt="dfq">
     </body>
 </html>

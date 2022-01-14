@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,5 +51,11 @@ class PrivateController extends Controller
         return redirect(route('user.login'))->withErrors([
             'formError' => 'error'
         ]);
+    }
+    public function delete(Request $request){
+
+        $contract = Contract::all()->find($request->get('id'));
+        $contract->delete();
+        return redirect()->to(route('user.private'));
     }
 }

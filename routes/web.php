@@ -44,5 +44,7 @@ Route::name('user.')->group(function (){
 
 });
 Route::get('/main',[MainController::class, 'main'])->name('main');
+Route::post('/main',[MainController::class, 'buy'])->name('buy');
+Route::post('/private',[\App\Http\Controllers\PrivateController::class, 'delete'])->name('delete');
 
 Route::get('/main/{id}', [\App\Http\Controllers\HotelController::class, 'getDetails'])->name('hotel_item');

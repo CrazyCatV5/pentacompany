@@ -1,7 +1,7 @@
 <header class="header">
     <div class="container align-items_center">
         <a href="index.php" class="logo" title="logo">
-            <img src="img/1y1ip0Pj2Oc.jpg" class = "img_logo" alt="Logo">
+            <img src="img/logo.png" class = "img_logo" alt="Logo">
         </a>
         <div class="header-right">
             <div class = "block">

@@ -9,7 +9,7 @@
 @include('header')
 <div class = "container">
     <div class="vertical-menu verticlal-menu_personal_area">
-        <div class="personal_area_name">Кузьмин Захар</div>
+        <div class="personal_area_name">{{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}</div>
         <a href="private" class="active border-top">Ваши туры</a>
         <a href="private_change" class="border-bottom">Изменить данные</a>
         <a href="main" class="border-bottom">Назад</a>
@@ -19,35 +19,25 @@
         <div class="header-cart" style="background:#e5e5e5">
             <div class = "total__price-cart">Ваши туры</div>
         </div>
+        @foreach(\Illuminate\Support\Facades\DB::table('contracts')->where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->id)->get() as $contract)
+            @foreach(\Illuminate\Support\Facades\DB::table('tours')->where('id', '=', $contract->tour_id)->get() as $tour)
         <div class="container container__tour border">
-            <img src="img\thailand.jpg" alt="картинка тура" width="200px" height="150px">
+            <img src="img\{{$tour->image}}" alt="картинка тура" width="200px" height="150px">
             <div class = "description">
-                <div class="grade"> 3.5/5</div>
-                <div class="margin__description">CARMEN SUITE 4*</div>
-                <div class="margin__description" style="font-size:15px;">Аланья</div>
-                <div class="margin__description" style="font-size:13px;">Апарт-отель расположен в городе Алания, в 600 м от аквапарка. Состоит из главного 9-этажного здания и дополнительного 5-этажного корпуса. К услугам гостей — апартаменты с бесплатным Wi-Fi, кондиционером и выходом в сад с открытым бассейном.</div>
+                <div class="grade"> {{$tour->rating}}/10</div>
+                <div class="margin__description">{{$tour->name}}</div>
+                <div class="margin__description" style="font-size:15px;">{{$tour->country}}</div>
+                <div class="margin__description" style="font-size:13px;">{{$tour->description}}</div>
+                <form action="{{route('delete')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$contract->id}}">
+                    <button type="submit" class = "registerbtn" name = "submit">удалить</button>
+                </form>
             </div>
         </div>
+            @endforeach
+        @endforeach
 
-        <div class="container container__tour border">
-            <img src="img\thailand.jpg" alt="картинка тура" width="200px" height="150px">
-            <div class = "description">
-                <div class="grade"> 3.5/5</div>
-                <div class="margin__description">CARMEN SUITE 4*</div>
-                <div class="margin__description" style="font-size:15px;">Аланья</div>
-                <div class="margin__description" style="font-size:13px;">Апарт-отель расположен в городе Алания, в 600 м от аквапарка. Состоит из главного 9-этажного здания и дополнительного 5-этажного корпуса. К услугам гостей — апартаменты с бесплатным Wi-Fi, кондиционером и выходом в сад с открытым бассейном.</div>
-            </div>
-        </div>
-
-        <div class="container container__tour border">
-            <img src="img\thailand.jpg" alt="картинка тура" width="200px" height="150px">
-            <div class = "description">
-                <div class="grade"> 3.5/5</div>
-                <div class="margin__description">CARMEN SUITE 4*</div>
-                <div class="margin__description" style="font-size:15px;">Аланья</div>
-                <div class="margin__description" style="font-size:13px;">Апарт-отель расположен в городе Алания, в 600 м от аквапарка. Состоит из главного 9-этажного здания и дополнительного 5-этажного корпуса. К услугам гостей — апартаменты с бесплатным Wi-Fi, кондиционером и выходом в сад с открытым бассейном.</div>
-            </div>
-        </div>
     </div>
 </div>
 @include('footer')

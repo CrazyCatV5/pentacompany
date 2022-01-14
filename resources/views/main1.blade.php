@@ -62,11 +62,16 @@
 </div>
 <ul class="container box_card">
     @foreach(\Illuminate\Support\Facades\DB::table('tours')->orderBy('rating','desc')->take(4)->get() as $tour)
-            <li class="card" onclick="location.href='{{ route('hotel_item', ['id' => $tour->id]) }}';">
+            <li class="card">
                 <img src="img/{{$tour->image}}" alt="Avatar" style="width:210px; height:130px;">
                 <div class="container_description">
                     <h4><b>{{$tour->name}}</b></h4>
                     <p> {{$tour->cost}} р</p>
+                    <form action="{{route('buy')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$tour->id}}">
+                        <button type="submit" class = "registerbtn" name = "submit">купить</button>
+                    </form>
                 </div>
             </li>
     @endforeach
@@ -86,8 +91,14 @@
                 <div class="description-cart">{{$tour->name}}</div>
                 <div class="item__price-cart">{{$tour->short_description}}</div>
                 <div class="buttons__wrap">
-                    <button class="button__country"><a href="{{ route('hotel_item', ['id' => $tour->id]) }}">Подробнее</a></button>
+                    <button class="button__country" onclick="window.location.href='{{ route('hotel_item', ['id' => $tour->id]) }}'">Подробнее</button>
+                    <form action="{{route('buy')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$tour->id}}">
+                        <button type="submit" class = "button__country" name = "submit">купить</button>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -95,6 +106,9 @@
     {!! $Tour->appends(request()->except('page'))->links() !!}
 </div>
     <style>.w-5{
+            display: none;
+        }
+        p.text-sm{
             display: none;
         }
     </style>

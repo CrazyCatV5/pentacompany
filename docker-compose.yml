@@ -53,6 +53,7 @@ services:
             - pgadmin:/var/lib/pgadmin
         networks:
             - sail
+
 networks:
     sail:
         driver: bridge

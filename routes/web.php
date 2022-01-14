@@ -39,6 +39,9 @@ Route::name('user.')->group(function (){
     })->name('registration');
     Route::post('/registration',[\App\Http\Controllers\RegisterController::class, 'save']);
     Route::get('/private', [\App\Http\Controllers\PrivateController::class, 'private'])->name('private');
+    Route::get('/private_change', [\App\Http\Controllers\PrivateController::class, 'private_change'])->name('private_change');
+    Route::post('/private_change', [\App\Http\Controllers\PrivateController::class, 'update'])->name('update');
+
 });
 Route::get('/main',[MainController::class, 'main'])->name('main');
 

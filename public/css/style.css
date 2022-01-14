@@ -381,7 +381,7 @@ select{
 }
 
 .last__order{
-    width: 500px;
+    width: 800px;
 }
 
 
@@ -394,6 +394,7 @@ select{
     border-bottom: 1px solid #E1E8EE;
     padding-left:10px;
     color: #5E6977;
+    padding-top:9px;
     font-size: 18px;
 }
 
@@ -595,4 +596,119 @@ select{
     background-color: #f1f1f1;
     text-align: center;
     padding:20px;
+}
+
+.container__tour{
+    font-family: Arial, sans-serif;
+    font-size:17px;
+    color: #4a4a4a;
+    background: linear-gradient(to left, white, #aadcf2);
+    padding:20px;
+    padding-left:20px;
+}
+
+.margin__description{
+    margin-top:10px;
+}
+
+.grade{
+    font-size:15px;
+
+}
+
+.description{
+    display:flex;
+    flex-direction:column;
+    margin-left:30px;
+}
+
+
+
+.operations{
+
+    font-family: Arial, sans-serif;
+    border-radius:6px;
+    height:50px;
+    background:#e5e5e5;
+    margin-top:40px;
+    display:flex;
+    align-items: center;
+}
+
+.operations-buy{
+    margin-left:auto;
+    background:#73e069;
+    width:120px;
+    height:35px;
+    border-radius:3px;
+    color:white;
+    margin-left:10px;
+}
+
+.operations-cost{
+    margin-left:auto;
+    font-weight: bold;
+    color: #707070;
+}
+
+.operations-description{
+    color: #707070;
+    font-size:14px;
+    margin-left:10px;
+}
+
+.vertical-menu {
+    font-family: Arial, sans-serif;
+    font-size:14px;
+    padding: 35px 0;
+    width: 200px;
+    height:250px;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 13px;
+    background-color: #6eb7eb;
+    color: white;
+}
+
+.border{
+    margin-top:10px;
+    border: 2px solid #f1f1f1;
+    border-radius:6px;
+}
+
+.personal_area_name{
+    color: #444444;
+    font-size:15px;
+    font-family: Arial, sans-serif;
+    padding-bottom:5px;
+}
+
+.add_product_point{
+    font-size:15px;
+    color: #444444;
+}
+
+.add_product{
+    padding: 35px 0;
+    margin:0 auto;
+}
+
+.add_product_container{
+    color: #444444;
+    font-family: Noto Sans, sans-serif;
+    width:500px;
 }

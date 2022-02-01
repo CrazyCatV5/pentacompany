@@ -18,8 +18,8 @@ class TourReviewFactory extends Factory
             'tour_id'=>$this->faker->numberBetween(1,10),
             'text'=>$this->faker->realText(),
             'rating'=>$this->faker->numberBetween(0,10),
-            'likes'=>$this->faker->numberBetween(0,50),
-            'dislikes'=>$this->faker->numberBetween(0,50),
+            'like'=>$this->faker->boolean(),
+            'dislike'=>$this->faker->boolean(),
         ];
     }
 }

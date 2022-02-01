@@ -27,6 +27,7 @@ class TourFactory extends Factory
             'start'=>$this->faker->date(),
             'finish'=>$this->faker->date(),
             'duration'=>$this->faker->numberBetween(0,10),
+            'hotel_id'=>$this->faker->numberBetween(1,50)
         ];
     }
 }

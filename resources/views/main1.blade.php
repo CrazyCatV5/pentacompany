@@ -90,8 +90,9 @@
             <div>
                 <div class="description-cart">{{$tour->name}}</div>
                 <div class="item__price-cart">{{$tour->short_description}}</div>
+                <div class="item__price-cart">{{$tour->cost}}р</div>
                 <div class="buttons__wrap">
-                    <button class="button__country" onclick="window.location.href='{{ route('hotel_item', ['id' => $tour->id]) }}'">Подробнее</button>
+                <!--<button class="button__country" onclick="window.location.href='{{ route('hotel_item', ['id' => $tour->id]) }}'">Подробнее</button> -->
                     <form action="{{route('buy')}}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{$tour->id}}">

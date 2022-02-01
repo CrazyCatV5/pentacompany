@@ -12,6 +12,9 @@
         <div class="personal_area_name">{{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}</div>
         <a href="private" class="active border-top">Ваши туры</a>
         <a href="private_change" class="border-bottom">Изменить данные</a>
+        @if(\Illuminate\Support\Facades\Auth::user()->tour_manager)
+            <a href="admin" class="border-bottom">admin-demo</a>
+        @endif
         <a href="main" class="border-bottom">Назад</a>
     </div>
 

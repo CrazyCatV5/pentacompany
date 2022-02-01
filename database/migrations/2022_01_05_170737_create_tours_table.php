@@ -22,19 +22,13 @@ class CreateToursTable extends Migration
             $table->string('country');
             $table->string('city');
             $table->text('image')->nullable();
-            $table->boolean('forChild')->nullable();
-            $table->boolean('healthy')->nullable();
-            $table->boolean('excursion')->nullable();
-            $table->boolean('corporate')->nullable();
-            $table->boolean('ski')->nullable();
-            $table->boolean('historical')->nullable();
-            $table->boolean('beach')->nullable();
             $table->integer('vouchers_count',0,true);
             $table->integer('vouchers_sold');
             $table->integer('cost');
             $table->date('start');
             $table->date('finish');
             $table->integer('duration');
+            $table->foreignId('hotel_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

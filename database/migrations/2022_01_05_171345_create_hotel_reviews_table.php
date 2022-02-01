@@ -16,11 +16,12 @@ class CreateHotelReviewsTable extends Migration
         Schema::create('hotel_reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->string('name');
             $table->text('text');
             $table->integer('rating');
-            $table->integer('likes');
-            $table->integer('dislikes');
+            $table->boolean('like')->nullable();
+            $table->boolean('dislike')->nullable();
             $table->timestamps();
         });
     }

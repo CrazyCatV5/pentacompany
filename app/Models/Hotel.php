@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Hotel extends Model
 {
     use HasFactory;
+    public function comment(){
+       return $this->hasMany(HotelReview::class);
+    }
+    public function nutrition(){
+        return $this->belongsToMany(Nutrition::class);
+    }
+
 }

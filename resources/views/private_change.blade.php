@@ -9,7 +9,7 @@
 @include('header')
 <div class = "container">
     <div class="vertical-menu verticlal-menu_personal_area">
-        <div class="personal_area_name">Кузьмин Захар</div>
+        <div class="personal_area_name">{{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}</div>
         <a href="private" class="border-top">Ваши туры</a>
         <a href="private_change" class="active border-bottom">Изменить данные</a>
         <a href="main" class="border-bottom">Назад</a>

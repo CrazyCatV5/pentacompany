@@ -21,7 +21,7 @@ class HotelFactory extends Factory
             'rating'=>$this->faker->numberBetween(0,10),
             'country'=>$this->faker->country(),
             'city'=>$this->faker->city(),
-            'address'=>$this->faker->address(),
+            'address'=>$this->faker->streetName(),
             'image'=>$this->faker->image('public/img',400,400, null,  false)
         ];
     }

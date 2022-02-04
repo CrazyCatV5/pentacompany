@@ -22,7 +22,7 @@ class ProfileOfHotelViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "ReviewCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: identifire)
-        nameOfHotel.text = hotels.names[myIndex]
+        nameOfHotel.text = hotelss[myIndex].name
         imageOfHotel.image = hotels.images[myIndex]
     }
     
@@ -32,16 +32,16 @@ class ProfileOfHotelViewController: UIViewController {
 
 extension ProfileOfHotelViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return reviews.names.count
+        return hotelss[myIndex].comment.count
         //return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifire, for: indexPath) as! ReviewCollectionViewCell
         //let image = images[indexPath.item]
-        cell.nameOfGuest.text = reviews.names[indexPath.item]
-        cell.textOfReview.text = reviews.textsOfReview[indexPath.item]
-        cell.ratingOfHotel.text = String(reviews.ratings[indexPath.item])
+        cell.nameOfGuest.text = hotelss[myIndex].comment[indexPath.item].name
+        cell.textOfReview.text = hotelss[myIndex].comment[indexPath.item].text
+        cell.ratingOfHotel.text = String(hotelss[myIndex].comment[indexPath.item].rating)
         cell.star.image = reviews.star
        
         return cell

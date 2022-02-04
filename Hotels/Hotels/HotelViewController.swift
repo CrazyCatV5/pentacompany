@@ -7,7 +7,7 @@
 
 import UIKit
 var x = 2.5
-var hotels = Hotels()
+
 var myIndex = 0
 
 class HotelViewController: UIViewController {
@@ -40,6 +40,7 @@ class HotelViewController: UIViewController {
 }
 
 extension HotelViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hotels.images.count
         //return images.count
@@ -49,10 +50,10 @@ extension HotelViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifire, for: indexPath) as! HotelCollectionViewCell
         //let image = images[indexPath.item]
         cell.photoView.image = hotels.images[indexPath.item]
-        cell.nameOfHotel.text = hotels.names[indexPath.item]
+        cell.nameOfHotel.text = hotelss[indexPath.item].name
         cell.starView.image = hotels.star
-        cell.quantityOfReviews.text = hotels.quantitiesOfReviews[indexPath.item]
-        cell.rating.text = hotels.ratings[indexPath.item]
+        cell.quantityOfReviews.text = String(hotelss[indexPath.item].comment.count)+" отзывов"
+        cell.rating.text = String(hotelss[indexPath.item].rating)
        
         return cell
     }

@@ -20,6 +20,8 @@
 		1F67588327AA726D00B003E4 /* Hotels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67588227AA726D00B003E4 /* Hotels.swift */; };
 		1F67588C27AA90ED00B003E4 /* HotelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67588A27AA90ED00B003E4 /* HotelCollectionViewCell.swift */; };
 		1F67588D27AA90ED00B003E4 /* HotelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F67588B27AA90ED00B003E4 /* HotelCollectionViewCell.xib */; };
+		1FE9A2AD27AD3EB200E9CAA9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9A2AC27AD3EB200E9CAA9 /* Model.swift */; };
+		1FE9A2AF27AD72A400E9CAA9 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9A2AE27AD72A400E9CAA9 /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		1F67588227AA726D00B003E4 /* Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotels.swift; sourceTree = "<group>"; };
 		1F67588A27AA90ED00B003E4 /* HotelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F67588B27AA90ED00B003E4 /* HotelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotelCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FE9A2AC27AD3EB200E9CAA9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1FE9A2AE27AD72A400E9CAA9 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		1F67585E27A930F900B003E4 = {
 			isa = PBXGroup;
 			children = (
+				1FE9A2AE27AD72A400E9CAA9 /* LaunchViewController.swift */,
+				1FE9A2AC27AD3EB200E9CAA9 /* Model.swift */,
 				1F32A84527ACF1D400E2D073 /* ReviewCollectionViewCell.swift */,
 				1F32A84627ACF1D400E2D073 /* ReviewCollectionViewCell.xib */,
 				1F67586927A930F900B003E4 /* Hotels */,
@@ -169,6 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE9A2AD27AD3EB200E9CAA9 /* Model.swift in Sources */,
+				1FE9A2AF27AD72A400E9CAA9 /* LaunchViewController.swift in Sources */,
 				1F32A84427ACEE2000E2D073 /* ProfileOfHotelViewController.swift in Sources */,
 				1F67588327AA726D00B003E4 /* Hotels.swift in Sources */,
 				1F32A84727ACF1D400E2D073 /* ReviewCollectionViewCell.swift in Sources */,
